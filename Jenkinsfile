@@ -11,7 +11,7 @@ node {
   if (env.BRANCH_NAME ==~ 'master|develop|release-.*') {
     stage('push package to repository') {
       docker.image('maven:3.6-jdk-8-alpine').inside {
-        sh 'mvn deploy -DaltDeploymentRepository=nexus-snapshots::default::http://35.170.203.139/:8081/repository/maven-snapshots/'
+        sh 'mvn deploy -DaltDeploymentRepository=nexus-snapshots::default::http://35.170.203.139:8081/repository/maven-snapshots/'
       }
     }
     stage('build docker image'){
